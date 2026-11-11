@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>valennl - Portafolio de Proyectos</title>
+    <style>
+        /* ==========================================================
+           RESET & GLOBALS (FLAT DESIGN)
+           ========================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            /* Vibrant Flat Palette */
+            --bg-main: #ecf0f1;
+            --bg-card: #ffffff;
+            --primary: #2c3e50;
+            --primary-light: #34495e;
+            --accent-blue: #2980b9;
+            --accent-green: #2ecc71;
+            --accent-orange: #e67e22;
+            --accent-purple: #8e44ad;
+            --accent-red: #e74c3c;
+            --accent-teal: #1abc9c;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ==========================================================
+           HEADER / HERO SECTION
+           ========================================================== */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 3.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .avatar-placeholder {
+            width: 100px;
+            height: 100px;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            font-size: 2.5rem;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem auto;
+            text-transform: uppercase;
+        }
+
+        .repo-badge {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: bold;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 1.8rem auto;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.6rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-green {
+            background-color: var(--accent-green);
+            color: var(--white);
+        }
+
+        .btn-green:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        /* ==========================================================
+           MAIN CONTENT
+           ========================================================== */
+        main {
+            max-width: 1100px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-blue);
+            margin: 0.5rem auto 0 auto;
+        }
+
+        /* ==========================================================
+           PROJECTS GRID
+           ========================================================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 4px solid var(--accent-blue);
+        }
+
+        .card-header-icon {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        /* Color profiles for distinct Flat Design cards */
+        .card-1 .card-header-icon { background-color: var(--accent-blue); }
+        .card-1 { border-bottom-color: var(--accent-blue); }
+
+        .card-2 .card-header-icon { background-color: var(--accent-orange); }
+        .card-2 { border-bottom-color: var(--accent-orange); }
+
+        .card-3 .card-header-icon { background-color: var(--accent-teal); }
+        .card-3 { border-bottom-color: var(--accent-teal); }
+
+        .card-4 .card-header-icon { background-color: var(--accent-purple); }
+        .card-4 { border-bottom-color: var(--accent-purple); }
+
+        .card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .tag {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .card-footer {
+            margin-top: auto;
+        }
+
+        .card-btn {
+            display: block;
+            text-align: center;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .card-btn:hover {
+            background-color: var(--primary-light);
+        }
+
+        /* ==========================================================
+           INFO BOX / ABOUT SECTION
+           ========================================================== */
+        .info-box {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 6px;
+            border-left: 6px solid var(--accent-green);
+            margin-bottom: 3rem;
+        }
+
+        .info-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .info-box p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* ==========================================================
+           FOOTER
+           ========================================================== */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* ==========================================================
+           RESPONSIVE DESIGN
+           ========================================================== */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .header-container p {
+                font-size: 1rem;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="avatar-placeholder">V</div>
+            <span class="repo-badge">GitHub Profile & Projects</span>
+            <h1>valennl</h1>
+            <p>Bienvenido al portafolio de proyectos y repositorios. Explora las soluciones de software, ejercicios de programación e investigaciones alojadas en el perfil.</p>
+            <div class="btn-group">
+                <a href="https://github.com/valennl" target="_blank" class="btn btn-green">Ver Perfil en GitHub</a>
+                <a href="#proyectos" class="btn btn-outline">Explorar Repositorios</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main>
+        
+        <!-- SECTION: PROJECTS -->
+        <h2 id="proyectos" class="section-title">Repositorios Destacados</h2>
+
+        <div class="projects-grid">
+
+            <!-- CARD 1 -->
+            <article class="card card-1">
+                <div class="card-header-icon">
+                    🤖
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">ExerciseAgenteA</h3>
+                    <p class="card-description">
+                        Implementación de agentes inteligentes, ejercicios de lógica de decisión y algoritmos de prueba.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">AI / Agent</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML5</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/valennl/ExerciseAgenteA" target="_blank" class="card-btn">Ver Repositorio</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="card card-2">
+                <div class="card-header-icon">
+                    ⚡
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Proyecto Web / App</h3>
+                    <p class="card-description">
+                        Aplicación interactiva con enfoque en experiencia de usuario y arquitectura limpia en el frontend.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Frontend</span>
+                        <span class="tag">Flat Design</span>
+                        <span class="tag">CSS3</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/valennl" target="_blank" class="card-btn">Ver Repositorio</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="card card-3">
+                <div class="card-header-icon">
+                    📊
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Análisis de Datos</h3>
+                    <p class="card-description">
+                        Colección de scripts y notebooks orientados al procesamiento de información y generación de métricas.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Data</span>
+                        <span class="tag">Algoritmos</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/valennl" target="_blank" class="card-btn">Ver Repositorio</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 4 -->
+            <article class="card card-4">
+                <div class="card-header-icon">
+                    🛠️
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Herramientas y Utilitarios</h3>
+                    <p class="card-description">
+                        Librerías auxiliares y componentes reutilizables para acelerar el desarrollo de proyectos web.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Tools</span>
+                        <span class="tag">Scripts</span>
+                        <span class="tag">Utilities</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/valennl" target="_blank" class="card-btn">Ver Repositorio</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- SECTION: INFO -->
+        <div class="info-box">
+            <h3>Acerca del Desarrollador</h3>
+            <p>
+                Este espacio reúne diferentes prácticas, ejercicios y desarrollos publicados en GitHub. Puedes acceder directamente a cada repositorio para explorar el código fuente o sus correspondientes versiones publicadas.
+            </p>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Portafolio de Repositorios &bull; <a href="https://github.com/valennl" target="_blank">github.com/valennl</a></p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">Construido en un solo archivo con diseño Flat sin dependencias externas.</p>
+    </footer>
+
+</body>
+</html>
